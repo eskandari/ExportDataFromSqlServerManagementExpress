@@ -1,0 +1,17 @@
+SELECT 'INSERT INTO [EhsanBlog].[dbo].[Posts]
+           ([CreatedDate]
+           ,[Subject]
+           ,[Body]
+           ,[PublishedDate]
+           ,[URLTitle]
+           ,[PageTitle]
+           ,[IsPublished])
+
+  SELECT ' + ''''+ CONVERT(VARCHAR(50), CreatedDate) + '''' + ','
+       + '''' + REPLACE(Subject, '''', '''''') + ''','
+       + '''' + REPLACE(Body, '''', '''''') + ''','
+       + ''''+  CONVERT(VARCHAR(50), PublishedDate) + ''''+ ','
+       + '''' + REPLACE(URLTitle, '''', '''''') + ''','       
+       + '''' + REPLACE(PageTitle, '''', '''''') + ''','              
+       + CONVERT(VARCHAR(12), IsPublished) + ';'
+FROM [EhsanBlog].[dbo].[Posts];
